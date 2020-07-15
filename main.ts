@@ -1,36 +1,53 @@
-import { ArrayService } from "./app-service";
+import { StringManipulationService } from "./app-service";
 
-export class ArrayComponent implements ArrayService {
-
-    constructor() {}
-
-    public arrayMultiply(myArray: number[]) : Array<Number> {
-      
+class ArrayManipulations implements StringManipulationService {
+  arrayFindMultiples(myArray: any): Array<Number> {
+    let a = [];
+    let i = 0;
+    let j = 0;
+    for (i = 0; i < myArray.length; i++) {
+      if (myArray[i] % 5 == 0 || myArray[i] % 10 == 0) {
+        a[j] = myArray[i];
+        j++;
+      }
     }
-
-    public arraySeparate(myArray: any) : Array<string>{
-        
+    return a;
+  }
+  arraySeparate(myArray: any): Array<String> {
+    let a = [];
+    let j = 0;
+    let i = 0;
+    for (i = 0; i < myArray.length; i++) {
+      if (typeof myArray[i] == "string") {
+        a[j] = myArray[i];
+        j++;
+      }
     }
-
-    public arraySplit(str:string) : Array<number>{
-
+    return a;
+  }
+  arraySplit(myArray: any): Array<String> {
+    let a: any[];
+    return a;
+  }
+  arraySort(myArray: any): Array<String> {
+    myArray.sort();
+    return myArray;
+  }
+  arrayReplace(myArray: any): Array<Number> {
+    let i = 0;
+    for (i = 0; i < myArray.length; i++) {
+      if (myArray[i] % 3 == 0) {
+        myArray[i] = 5;
+      }
     }
-
-    public arraySort(myArray:any):Array<string>{
-      
-    }
-
-    public arrayReplace(myArray:any):Array<number>{
-       
+    return myArray;
+  }
 }
+let myArray: any[] = [2, 5, 10, "nandan", 44, 25, 46, 80, 96, "string"];
+let array = new ArrayManipulations();
 
-let myArray: number[] = [34, 45, 60, 23, 13, 25, 70];
-let array = new ArrayComponent();
-
-console.log(array.arrayMultiply(myArray));
+console.log(array.arrayFindMultiples(myArray));
 console.log(array.arraySeparate(myArray));
+console.log(array.arraySplit(myArray));
 console.log(array.arraySort(myArray));
 console.log(array.arrayReplace(myArray));
-
-
-
